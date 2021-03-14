@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <select id="selectUsers" resultType="java.util.Map">
+        select * from user where is_deleted=0 order by create_time;
+    </select>
+
+    <update id="updateUser" parameterType="java.util.Map">
+        update user set name = #{name}, age = #{age} where id = #{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.String">
+        update user set is_deleted=1 where id = #{id};
+    </delete>
+
+    <insert id="addUser" parameterType="java.util.Map">
+        insert into user values(uuid(), #{name}, #{age}, 0, now());
+    </insert>
+</mapper>

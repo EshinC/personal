@@ -1,0 +1,19 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    username: root
+    password: cui123
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+
+mybatis:
+  # 所有Entity别名类所在包
+  type-aliases-package: com.example.demo.pojo
+  # mapper映射文件
+  mapper-locations: classpath:com/example/demo/mapper/*.xml
+
+# 指定log4j2作为日志记录
+logging:
+  level:
+    com.example.demo.mapper: DEBUG
